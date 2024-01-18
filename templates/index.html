@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block body%}
+  <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+  <!-- Video.js base CSS -->
+  <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+
+  <!-- City -->
+  <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet"/>
+
+  <link href="static/css/style.css" rel="stylesheet"> 
+
+  <!-- Download Ready Message  -->
+  <div class="container d-none " id="message">
+    <div class="alert alert-primary" role="alert">
+      🤖 Your File is Ready To Download 🤖
+    </div>
+  </div>
+  <!-- Download Ready Message  end -->
+
+  <!-- File Format Not Supported Message  -->
+  <div class="container d-none " id="unsupported-message">
+    <div class="alert alert-danger" role="alert">
+      🤐 File Format Not Supported🤐
+    </div>
+  </div>
+  <!-- File Format Not Supported Message  end -->
+    
+
+  <!-- Loader -->
+  <div class="progress-container d-none">
+    <div class="loader">
+      <div class="inner one1"></div>
+      <div class="inner two2"></div>
+      <div class="inner three3"></div>
+    </div>
+  </div>
+  <!-- Loader  End -->
+
+  <div id="inputVideoPic"  class="container d-flex justify-content-center align-items-center"  >
+      <div class="row" >
+        <div class="col-md-6 ">
+          <figure>
+            <img id="uploadedImage" src="../static/image/input.jpg" class="rounded img-fluid shadow-lg " alt="Input" >
+            <figcaption class="font-weight-bold text-center mt-2" id="uploadedImageCaption">Sample Input</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6" id="resultVideoPic">
+          <figure>
+            <img id="resultPicture" src="../static/image/detect.jpg" class="rounded img-fluid shadow-lg" alt="Detection" >
+            <figcaption class="font-weight-bold text-center mt-2" id="resultPictureCaption">Sample Output</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    
+    <div id="multidataTable" class="row justify-content-center mt-3 mx-20">
+      <div class="flex flex-row justify-between">
+        <!-- <th><input type="file" name='test_file' class="form-control-file " id="fileInput"></th> -->
+        <form action='/detection' method='POST' enctype="multipart/form-data">
+          <th>
+            <label for="fileInput" for="english-translation">Select a file:</label>
+            <input type="file" name='test_file' class="form-control-file " id="fileInput" value="Select a file">
+          </th>
+          <th>
+            <input id="predictButton" type="submit" value="Detect" class="btn btn-dark">
+          </th>
+        </form>
+        <form action='/download/{{fName}}' method='POST' id="downloadForm">
+          <input type="submit" class="btn btn-dark" value=Download id="downloadButton">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+{% endblock %}

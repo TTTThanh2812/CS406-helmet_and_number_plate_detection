@@ -1,0 +1,16 @@
+names:
+- license plate
+- not wearing helmet
+- full faced helmet
+- half faced helmet
+- rider
+nc: 5
+roboflow:
+  license: CC BY 4.0
+  project: rahul-e5ske
+  url: https://universe.roboflow.com/rhythm/rahul-e5ske/dataset/1
+  version: 1
+  workspace: rhythm
+test: ../test/images
+train: RAHUL-1/train/images
+val: RAHUL-1/valid/images

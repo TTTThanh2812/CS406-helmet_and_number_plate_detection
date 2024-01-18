@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap css-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Tailwind css  -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant+Garamond">
+  <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Plus Jakarta Sans' rel='stylesheet'>
+  <!-- Custom css -->
+  <link rel="stylesheet" href="../static/css/layout.css">
+  <link rel="icon" href="../static/image/logo.png" type="image/x-icon">
+  <title>Helmet and License Plate Detection</title>
+</head>
+<body>
+  <section id="heading" class="px-3 py-2 bg-warning text-white">
+    <div class="flex align-items-center justify-content-lg-start">
+      <a href="/" class="flex-none text-decoration-none">
+        <img src="../static/image/logo.png" class="object-contain h-20 w-20" alt="logo">
+      </a>
+
+      <ul class="flex-1 justify-end gap-20 nav my-md-0 pr-6" >
+        <li class="nav-item px-2 my-2 ">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item px-2 my-2 ">
+          <a class="nav-link" href="#how">How</a>
+        </li>
+        <li class="nav-item px-2 my-2 ">
+          <a class="nav-link" href="#detect">Detect</a>
+        </li>
+        <li class="nav-item px-2 my-2 ">
+          <a class="nav-link" href="#about_us">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <div class="spinner-wrapper">
+    <div class="loader">
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
+    </div>
+  </div>
+  <section id="home" class="grid grid-cols-2 justify-between h-max items-center">
+    <div class="text">
+      <svg xmlns="http://www.w3.org/2000/svg" width="52" height="15" viewBox="0 0 52 15" fill="none">
+          <path d="M45.9401 12.9926C45.9651 13.2668 45.5413 13.5285 44.6689 13.7777C43.7716 14.0519 43.0363 14.189 42.463 14.189C42.1888 14.189 42.0642 14.1392 42.0891 14.0395L44.9306 8.20683C44.9556 8.13205 45.0304 8.09466 45.155 8.09466C45.2547 8.09466 45.3045 8.13205 45.3045 8.20683L45.9401 12.9926ZM50.9128 8.43116C51.1621 8.45609 51.2867 8.87983 51.2867 9.70238C51.2867 10.3255 51.2244 10.9487 51.0998 11.5718C50.9502 12.2199 50.8256 12.4941 50.7259 12.3944L46.0149 7.87033C45.9651 7.84541 45.9651 7.77063 46.0149 7.646C46.0398 7.5463 46.0772 7.50891 46.1271 7.53383L50.9128 8.43116ZM44.4072 7.27211C44.4571 7.27211 44.4944 7.32196 44.5194 7.42167C44.5443 7.52137 44.5318 7.58368 44.482 7.60861L40.1449 9.70238C39.9206 9.80208 39.609 9.57775 39.2102 9.02938C38.7864 8.48101 38.425 7.89526 38.1259 7.27211C37.8268 6.67389 37.752 6.37478 37.9016 6.37478L44.4072 7.27211ZM48.0713 2.3368C48.0962 2.2371 48.2209 2.18725 48.4452 2.18725C48.7692 2.18725 49.2179 2.29941 49.7912 2.52374C50.3645 2.74808 50.863 2.98487 51.2867 3.23413C51.7105 3.50831 51.8725 3.67033 51.7728 3.72018L46.0523 6.78606L45.9775 6.82345C45.9028 6.82345 45.8404 6.78606 45.7906 6.71128C45.7158 6.66143 45.6909 6.61158 45.7158 6.56173L48.0713 2.3368ZM45.0802 6.41217C45.1051 6.46202 45.0677 6.52434 44.968 6.59911C44.8683 6.69882 44.7936 6.72374 44.7437 6.67389L41.4161 3.12196C41.2666 2.97241 41.3912 2.61098 41.79 2.03769C42.1639 1.48932 42.6001 0.978343 43.0986 0.504752C43.5971 0.0560877 43.8588 -0.0934675 43.8838 0.0560878L45.0802 6.41217Z" fill="#1D1D1C"/>
+          <path d="M27.0267 12.9926C27.0516 13.2668 26.6279 13.5285 25.7555 13.7777C24.8582 14.0519 24.1228 14.189 23.5496 14.189C23.2754 14.189 23.1507 14.1392 23.1757 14.0395L26.0172 8.20683C26.0421 8.13205 26.1169 8.09466 26.2415 8.09466C26.3412 8.09466 26.3911 8.13205 26.3911 8.20683L27.0267 12.9926ZM31.9994 8.43116C32.2487 8.45609 32.3733 8.87983 32.3733 9.70238C32.3733 10.3255 32.311 10.9487 32.1864 11.5718C32.0368 12.2199 31.9122 12.4941 31.8125 12.3944L27.1015 7.87033C27.0516 7.8454 27.0516 7.77063 27.1015 7.646C27.1264 7.54629 27.1638 7.50891 27.2136 7.53383L31.9994 8.43116ZM25.4938 7.27211C25.5436 7.27211 25.581 7.32196 25.6059 7.42167C25.6309 7.52137 25.6184 7.58368 25.5685 7.60861L21.2315 9.70238C21.0071 9.80208 20.6955 9.57775 20.2967 9.02938C19.873 8.48101 19.5116 7.89526 19.2125 7.27211C18.9133 6.67389 18.8386 6.37478 18.9881 6.37478L25.4938 7.27211ZM29.1579 2.3368C29.1828 2.2371 29.3074 2.18724 29.5318 2.18724C29.8558 2.18724 30.3045 2.29941 30.8777 2.52374C31.451 2.74807 31.9496 2.98487 32.3733 3.23413C32.797 3.50831 32.9591 3.67033 32.8593 3.72018L27.1389 6.78606L27.0641 6.82344C26.9893 6.82344 26.927 6.78606 26.8772 6.71128C26.8024 6.66143 26.7774 6.61158 26.8024 6.56172L29.1579 2.3368ZM26.1668 6.41217C26.1917 6.46202 26.1543 6.52434 26.0546 6.59911C25.9549 6.69882 25.8801 6.72374 25.8303 6.67389L22.5027 3.12196C22.3531 2.97241 22.4777 2.61098 22.8766 2.03769C23.2504 1.48932 23.6866 0.978342 24.1852 0.504751C24.6837 0.0560861 24.9454 -0.0934691 24.9703 0.0560861L26.1668 6.41217Z" fill="#1D1D1C"/>
+          <path d="M8.11327 12.9926C8.1382 13.2668 7.71445 13.5285 6.84205 13.7777C5.94472 14.0519 5.20941 14.189 4.63612 14.189C4.36193 14.189 4.2373 14.1392 4.26223 14.0395L7.10378 8.20683C7.1287 8.13205 7.20348 8.09466 7.32811 8.09466C7.42781 8.09466 7.47766 8.13205 7.47766 8.20683L8.11327 12.9926ZM13.086 8.43116C13.3352 8.45609 13.4599 8.87982 13.4599 9.70238C13.4599 10.3255 13.3975 10.9487 13.2729 11.5718C13.1234 12.2199 12.9987 12.4941 12.899 12.3944L8.18805 7.87033C8.13819 7.8454 8.13819 7.77063 8.18805 7.646C8.21297 7.54629 8.25036 7.5089 8.30021 7.53383L13.086 8.43116ZM6.58033 7.27211C6.63018 7.27211 6.66757 7.32196 6.69249 7.42166C6.71742 7.52137 6.70496 7.58368 6.65511 7.60861L2.31802 9.70237C2.09368 9.80208 1.78211 9.57775 1.3833 9.02938C0.959561 8.48101 0.598137 7.89525 0.299027 7.27211C-8.32663e-05 6.67389 -0.0748628 6.37478 0.0746925 6.37478L6.58033 7.27211ZM10.2444 2.3368C10.2693 2.23709 10.394 2.18724 10.6183 2.18724C10.9423 2.18724 11.391 2.29941 11.9643 2.52374C12.5376 2.74807 13.0361 2.98487 13.4599 3.23413C13.8836 3.50831 14.0456 3.67033 13.9459 3.72018L8.22543 6.78606L8.15066 6.82344C8.07588 6.82344 8.01357 6.78605 7.96371 6.71128C7.88894 6.66143 7.86401 6.61157 7.88894 6.56172L10.2444 2.3368ZM7.25333 6.41217C7.27825 6.46202 7.24086 6.52433 7.14116 6.59911C7.04146 6.69881 6.96668 6.72374 6.91683 6.67389L3.58924 3.12196C3.43968 2.9724 3.56431 2.61098 3.96312 2.03769C4.33701 1.48932 4.77321 0.97834 5.27173 0.504749C5.77024 0.0560844 6.03196 -0.0934708 6.05689 0.0560844L7.25333 6.41217Z" fill="#1D1D1C"/>
+      </svg>
+      <div class="text-heading font-semibold">
+          <p>CS406 Final project:</p> <p>Helmet and License Plate Detection</p>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="92" height="27" viewBox="0 0 92 27" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M4.46925e-07 13.8978C4.42578e-07 13.5 0.158013 13.1185 0.439279 12.8373C0.720544 12.556 1.10202 12.398 1.49979 12.398L86.5284 12.0002L77.0887 2.56352C76.8071 2.2819 76.6489 1.89994 76.6489 1.50167C76.6489 1.1034 76.8071 0.721441 77.0887 0.439819C77.3703 0.158199 77.7523 -1.5502e-05 78.1505 -1.55716e-05C78.5488 -1.56413e-05 78.9308 0.158199 79.2124 0.439819L91.2107 12.4381C91.3504 12.5774 91.4612 12.743 91.5368 12.9252C91.6124 13.1074 91.6513 13.3027 91.6513 13.5C91.6513 13.6973 91.6124 13.8926 91.5368 14.0748C91.4612 14.257 91.3504 14.4225 91.2107 14.5618L79.2124 26.5602C78.9308 26.8418 78.5488 27 78.1505 27C77.7523 27 77.3703 26.8418 77.0887 26.5602C76.8071 26.2785 76.6489 25.8966 76.6489 25.4983C76.6489 25.1 76.8071 24.7181 77.0887 24.4365L86.5284 14.9998L1.49979 15.3976C1.10202 15.3976 0.720544 15.2395 0.439279 14.9583C0.158013 14.677 4.51271e-07 14.2955 4.46925e-07 13.8978Z" fill="black"/>
+      </svg>
+      <p class="text-sub-heading text-justify">Our website utilizes advanced technology to automatically detect safety helmets and license plates. Simply upload an image, and you will receive instant results. Our commitment is to provide a safe and efficient experience for traffic safety checks. Thank you for visiting!</p>
+      <div class="btn-start flex justify-start">
+        <a class="btn start" href="#detect">LET’S START</a>
+        <a class="btn work flex flex-row items-center gap-2" href="#how">
+          <p class="font-medium">How it works</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="11" viewBox="0 0 18 11" fill="none">
+            <path d="M10.8 10L16.2426 5.50001L10.8 0.999999" stroke="url(#paint0_linear_3_259)" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.00001 5.5L16.0905 5.5" stroke="url(#paint1_linear_3_259)" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="paint0_linear_3_259" x1="16.2426" y1="7.75" x2="9.42947" y2="6.60019" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#88AAED"/>
+                <stop offset="1" stop-color="#FCB4CA"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear_3_259" x1="16.0905" y1="5.25" x2="15.0534" y2="0.88282" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#88AAED"/>
+                <stop offset="1" stop-color="#FCB4CA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!-- <div class="image"> -->
+    <img src="../static/image/home.jpg" alt="home" class="img-home w-full h-max">
+    <!-- </div> -->
+  </section>
+
+<section id="how" class="bg-dark text-secondary px-4 py-5 text-center mb-16">
+  <h1 class="text-white text-4xl">How it work?</h1>
+  <div class="py-5">   
+    <div class="grid grid-cols-3 ">
+      <div class="step">
+        <img class="rounded" width="150" height="160" src="https://www.svgrepo.com/show/189430/files-folder.svg" alt="">
+        <h2 class="text-white">Step 1</h2>
+        <p class="text-white">Import Image or Clip: Click "Choose File" and select the image or video.</p>
+      </div>
+      <div class="step">
+        <img class="rounded" width="150" height="160" src="https://www.svgrepo.com/show/422405/find-glass-interface.svg" alt="">
+        <h2 class="text-white">Step 2</h2>
+        <p class="text-white">Detect Helmet and Number Plate Content: Click The Detect Button to detect.</p>
+      </div>
+      <div class="step">
+        <img class="rounded" width="150" height="160" src="https://www.svgrepo.com/show/475151/download.svg" alt="">
+        <h2 class="text-white">Step 3</h2>
+        <p class="text-white">Download Output: Get the detect helmet and number plate image or video.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="detect">
+  <h1 class="text-black text-4xl text-center mb-4">Detect your image/video</h1>
+  {% block body %} {%endblock%}
+</section>
+
+<section id="about_us" class="px-4 py-5 text-center mt-16 bg-warning text-white ">
+  <div class="flex flex-row justify-content-center align-items-center gap-x-2 pb-5 pt-2">
+    <div class="w-20 h-0.5 bg-white"></div>
+    <h1 class="text-white text-4xl">About us</h1>
+    <div class="w-20 h-0.5 bg-white"></div>
+  </div>
+    
+  <div class="flex flex-row justify-content-around">
+    <div class="member">
+      <img src="../static//image/member2.png" alt="member2" class="w-40 h40">
+      <p>Phạm Hoàng Phúc</p>
+      <p>20520278</p>
+    </div>
+    <div class="member">
+      <img src="../static//image/member3.png" alt="member2" class="w-40 h40">
+      <p>Trương Thị Thanh Thanh</p>
+      <p>20520767</p>
+    </div>
+    <div class="member">
+      <img src="../static//image/member1.png" alt="member2" class="w-40 h40">
+      <p>Nguyễn Đặng Bảo Ngọc</p>
+      <p>20521663</p>
+    </div>
+  </div>
+</section>
+<h2 class="bg-black text-white text-2xl text-center py-2">THANK YOU!</h2>
+</body>
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+</html>
