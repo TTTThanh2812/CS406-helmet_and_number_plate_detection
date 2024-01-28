@@ -63,7 +63,7 @@ def detect(test_input):
         image/video with detection
     """
     # weights
-    weights_path = 'weights/best_test.pt'
+    weights_path = 'weights/best_exp2.pt'
     # to save the detection
     output_path = 'static/test_out'
     # img dimension
